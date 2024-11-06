@@ -118,4 +118,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employee;
     }
 
+
+    /**
+     * 更新员工信息
+     * @param employee
+     */
+    @Override
+    public void update(Employee employee) {
+        employeeMapper.update(employee);
+    }
 }

@@ -102,5 +102,23 @@ public class EmployeeController {
     }
 
 
+    /**
+     * 启用或禁用员工账号，只有管理员才可以，管理员账号不可以锁定
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用或禁用员工账号")
+    //TODO：需要改为只有管理员才可以操作，且管理员账号不可以被锁定
+    public Result startOrStop(@PathVariable Integer status, Long id) {
+        log.info("启用或禁用员工账号");
+        Employee employee = Employee.builder().status(status).id(id).build();
+        //更新员工的status
+        employeeService.update(employee);
+        return Result.success();
+    }
+
+
 
 }
